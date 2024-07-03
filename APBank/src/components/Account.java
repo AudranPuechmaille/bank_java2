@@ -1,12 +1,15 @@
 package components;
 
 import components.Client;
+import components.Flow;
+
+// 1.2.1 Creation of the account class
 
 public abstract class Account 
 {
 	private static int incrAccountNumber = 1;
 	private String label;
-	private String balance;
+	private double balance;
 	private int accountNumber;
 	private Client client;
 	
@@ -14,24 +17,8 @@ public abstract class Account
 	{
 		this.label = label;
 		this.client = client;
-		this.balance = balance;
+		this.balance = 0.0;
 		this.accountNumber = incrAccountNumber++;		
-	}
-	
-	public class SavingsAccount extends Account 
-	{
-	    public SavingsAccount(String label, Client client) 
-	    {
-	        super(label, client);
-	    }
-	}
-	
-	public class CurrentAccount extends Account 
-	{
-	    public CurrentAccount(String label, Client client) 
-	    {
-	        super(label, client);
-	    }
 	}
 	
 	@Override
@@ -59,11 +46,11 @@ public abstract class Account
 		this.label = label;
 	}
 
-	public String getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(String balance) {
+	public void setBalance(double balance, Flow flow) {
 		this.balance = balance;
 	}
 
